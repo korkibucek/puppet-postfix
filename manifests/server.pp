@@ -184,7 +184,7 @@ class postfix::server (
     restart   => $service_restart,
   }
 # service_manage for postfix
-  if $postfix::service_manage == true {
+  if $postfix::server::service_manage == true {
     service { 'ntp':
       require => Package[$package_name],
       enable     => true,
