@@ -8,6 +8,8 @@
 # Sample Usage :
 #
 class postfix::server (
+  #Service Manage for postfix
+  Boolean $service_manage,
   # To install postfix-mysql package instead of plain postfix (EL5)
   $mysql = false,
   # See the main.cf comments for help on these options
@@ -180,6 +182,15 @@ class postfix::server (
     enable    => true,
     hasstatus => true,
     restart   => $service_restart,
+  }
+# service_manage for postfix
+  if $postfix::service_manage == true {
+    service { 'ntp':
+      require => Package[$package_name],
+      enable     => true,
+      hasstatus  => true,
+      restart   => $service_restart,
+    }
   }
 
   file { "${config_directory}/master.cf":
