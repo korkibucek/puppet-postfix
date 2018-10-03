@@ -9,7 +9,7 @@
 #
 class postfix::server (
   #Service Manage for postfix
-  Boolean $service_manage,
+  $service_manage = true,
   # To install postfix-mysql package instead of plain postfix (EL5)
   $mysql = false,
   # See the main.cf comments for help on these options
