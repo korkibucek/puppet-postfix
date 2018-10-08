@@ -188,12 +188,14 @@ class postfix::server (
     }
   }
   else {
+    service { 'postfix':
     require => Package[$package_name],
     enable     => false,
     ensure  => stopped,
     hasstatus  => false,
     restart   => $service_restart,
   }
+}
 
   file { "${config_directory}/master.cf":
     content => template("postfix/master.cf${filesuffix}.erb"),
