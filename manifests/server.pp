@@ -177,12 +177,6 @@ class postfix::server (
   }
   package { $package_name: ensure => $postfix_package_ensure, alias => 'postfix' }
 
-  service { 'postfix':
-    require   => Package[$package_name],
-    enable    => true,
-    hasstatus => true,
-    restart   => $service_restart,
-  }
 # service_manage for postfix
   if $service_manage == true {
     service { 'postfix':
