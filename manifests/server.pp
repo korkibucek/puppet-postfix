@@ -178,7 +178,7 @@ class postfix::server (
   package { $package_name: ensure => $postfix_package_ensure, alias => 'postfix' }
 
 # service_manage for postfix
-  if $service_manage == true {
+  if $service_manage == 'true' {
     service { 'postfix':
       require => Package[$package_name],
       enable     => true,
