@@ -181,6 +181,7 @@ class postfix::server (
   if $service_manage == 'true' {
     service { 'postfix':
       require => Package[$package_name],
+      ensure => running,
       enable     => true,
       hasstatus  => true,
       restart   => $service_restart,
@@ -189,6 +190,7 @@ class postfix::server (
   else {
     require => Package[$package_name],
     enable     => false,
+    ensure  => stopped
     hasstatus  => false,
     restart   => $service_restart,
   }
