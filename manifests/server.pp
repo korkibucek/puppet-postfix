@@ -186,6 +186,12 @@ class postfix::server (
       restart   => $service_restart,
     }
   }
+  else {
+    require => Package[$package_name],
+    enable     => false,
+    hasstatus  => false,
+    restart   => $service_restart,
+  }
 
   file { "${config_directory}/master.cf":
     content => template("postfix/master.cf${filesuffix}.erb"),
