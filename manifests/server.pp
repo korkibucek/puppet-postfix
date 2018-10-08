@@ -190,7 +190,7 @@ class postfix::server (
   else {
     require => Package[$package_name],
     enable     => false,
-    ensure  => stopped
+    ensure  => stopped,
     hasstatus  => false,
     restart   => $service_restart,
   }
